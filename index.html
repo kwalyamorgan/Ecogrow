@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoGrow Cameroon - Sustainable Waste & Fertilizer Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------------------- CSS Variables & Global Resets ---------------------- */
+    :root {
+      --primary: #2e7d32; /* Deep Green */
+      --primary-dark: #1b5e20; /* Darker Green for hover/active */
+      --secondary: #c8e6c9; /* Light Green */
+      --text-dark: #212121; /* Darker text for better contrast */
+      --text-light: #fff;
+      --max-width: 1100px;
+      --radius: 12px;
+    }
+
+    /* Use Poppins for a modern, legible look */
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
+    body {
+      line-height: 1.7; /* Increased for better readability */
+      color: var(--text-dark);
+      background-color: #f4f7f6; /* Slightly deeper background */
+      scroll-behavior: smooth; /* Smooth scrolling for nav links */
+    }
+    a {text-decoration: none; color: var(--primary); transition: color 0.3s;}
+    a:hover {color: var(--primary-dark);}
+
+    /* ---------------------- Utility & Container ---------------------- */
+    .container {max-width: var(--max-width); margin: auto; padding: 1.5rem 1rem;} /* Increased padding */
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    /* ---------------------- Header & Navigation ---------------------- */
+    header {
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+      z-index: 10;
+    }
+    header .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    header .logo-group {
+      display: flex;
+      align-items: center;
+    }
+    header img.logo {
+      max-height: 40px; /* Smaller logo in header for clean look */
+      margin-right: 0.5rem;
+    }
+    header h1 {font-size: 1.4rem; font-weight: 700;}
+    
+    /* Mobile Navigation - Hidden by default, shown by toggle in a real app */
+    nav {display: none;} /* Simplified for this example, in production you'd use a hamburger menu */
+    @media (min-width: 768px) {
+        nav {display: block;}
+        nav a {
+            color: var(--text-light);
+            margin-left: 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+    }
+    
+    /* ---------------------- Hero Section (NEW) ---------------------- */
+    #hero {
+        background: linear-gradient(rgba(46, 125, 50, 0.75), rgba(46, 125, 50, 0.75)), url('assets/hero-bg.jpg') center/cover;
+        min-height: 80vh; /* Takes up most of the viewport on mobile */
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: var(--text-light);
+        padding: 2rem 1rem;
+    }
+    #hero h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+    #hero p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        font-weight: 400;
+    }
+    .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    .cta-buttons .btn-primary {
+        background: var(--text-light);
+        color: var(--primary-dark);
+    }
+    .cta-buttons .btn-primary:hover {
+        background-color: #eee;
+        transform: scale(1.05);
+    }
+    .cta-buttons .btn-secondary-outline {
+        border: 2px solid var(--text-light);
+        color: var(--text-light);
+    }
+    .cta-buttons .btn-secondary-outline:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: scale(1.05);
+    }
+    
+    /* ---------------------- Section Styling ---------------------- */
+    section {margin: 3rem 0;} /* Increased vertical spacing */
+    section h2 {
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-align: center;
+      position: relative;
+    }
+    section h2::after { /* Underline effect */
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--primary);
+        margin: 8px auto 0;
+    }
+    
+    /* About Section Image Blocks */
+    .image-block {
+      text-align: center;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border-left: 4px solid var(--primary); /* Highlight feature */
+      background: var(--secondary);
+      border-radius: var(--radius);
+    }
+    .image-block img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .image-block p em {
+        color: var(--primary-dark);
+        font-weight: 600;
+        display: block;
+        margin-top: 0.5rem;
+    }
+
+    /* ---------------------- Cards (Projects/Team) ---------------------- */
+    .team, .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem; /* Increased gap */
+    }
+    .card {
+      background: var(--text-light); /* White background for better pop */
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px); /* Subtle lift on hover */
+    }
+    .card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%; /* Make team images circular */
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid var(--primary); /* Highlight team members */
+    }
+    .projects .card img {
+        border-radius: 8px; /* Keep project images square/rectangular */
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        object-fit: cover;
+        border: none;
+    }
+    .card h3 {margin-bottom: 0.5rem; font-size: 1.2rem;}
+
+    /* ---------------------- Contact & Form ---------------------- */
+    .contact p {margin-bottom: 0.5rem;}
+    .contact form {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .contact input, .contact textarea {
+      padding: 0.9rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .contact input:focus, .contact textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2); /* Focus ring */
+    }
+    .contact button {
+      /* Use the primary button style */
+      background: var(--primary);
+      color: var(--text-light);
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .contact button:hover {
+        background: var(--primary-dark);
+    }
+    
+    /* Contact CTA buttons - Use generic btn classes for consistency */
+    .contact .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .contact .cta-buttons a {
+      flex: 1;
+      text-align: center;
+      background: var(--primary);
+      color: var(--text-light);
+    }
+    .contact .cta-buttons a:first-child {
+        background-color: #ff9800; /* Distinct color for Donate */
+    }
+    .contact .cta-buttons a:first-child:hover {
+        background-color: #fb8c00;
+    }
+    .contact .cta-buttons a:last-child {
+        background-color: #79a17a; /* Secondary action color */
+    }
+    .contact .cta-buttons a:last-child:hover {
+        background-color: #6a926b;
+    }
+
+    /* ---------------------- Footer ---------------------- */
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: var(--primary-dark); /* Darker footer for contrast */
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+    
+    /* ---------------------- Tablet/Desktop Media Queries ---------------------- */
+    @media (min-width: 600px) {
+        /* Adjustments for slightly larger screens (tablets) */
+        header h1 { font-size: 1.6rem; }
+        .team, .projects {grid-template-columns: repeat(2, 1fr);}
+        
+        .cta-buttons {
+            flex-direction: row;
+            justify-content: center;
+        }
+        .cta-buttons a {
+            flex: unset;
+            min-width: 200px;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        /* Desktop navigation is visible, mobile header simplified */
+        header {
+            padding: 1rem 0;
+        }
+        header .header-content {
+            padding: 0 1rem;
+        }
+        header h1 {font-size: 1.2rem;}
+        header img.logo {max-height: 50px;}
+        #hero h2 {font-size: 3rem;}
+        #hero p {font-size: 1.2rem;}
+        
+        /* Contact CTA buttons in a row for desktop */
+        .contact .cta-buttons {
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+        .contact .cta-buttons a {
+            min-width: 180px;
+        }
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+        <div class="logo-group">
+            <img src="assets/logo.jpg" alt="EcoGrow Logo" class="logo">
+            <h1>EcoGrow Cameroon</h1>
+        </div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#team">Team</a>
+          <a href="#contact">Contact</a>
+        </nav>
+    </div>
+  </header>
+  
+  <section id="hero">
+    <div class="container">
+        <h2>Waste to Wealth: Creating a Sustainable Future for Cameroon</h2>
+        <p>
+            We're tackling waste management with innovative solutions, transforming collected waste into high-quality, eco-friendly fertilizers for local farmers. Join our mission for a cleaner and greener Southwest Region.
+        </p>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn btn-primary">See Our Impact</a>
+          <a href="#contact" class="btn btn-secondary-outline">Get Involved</a>
+        </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="about">
+      <h2>Our Vision</h2>
+      <p>
+        EcoGrow Cameroon is a social venture tackling critical waste management challenges in southwest Cameroon. 
+        We transform collected waste into high-quality, eco-friendly fertilizers distributed to farmers at subsidized prices. 
+        Our initiative supports sustainable farming, creates green jobs, and promotes a cleaner environment for the community.
+      </p>
+      
+      <div class="image-block">
+        <img src="assets/recycling.jpg" alt="Recycling process facility">
+        <h3>Innovation in Waste Management</h3>
+        <p>We implement a robust, community-based collection system that diverts tons of organic waste from landfills every week.</p>
+      </div>
+      <div class="image-block">
+        <img src="assets/nourishing.jpg" alt="Fertilizer being used on a farm">
+        <h3>Nourishing the Land</h3>
+        <p>Our final product is a nutrient-dense, natural fertilizer that regenerates soil health and boosts the yields of local farms.</p>
+      </div>
+      <div class="image-block">
+        <img src="assets/community.jpg" alt="Local people working together">
+        <h3>Empowering the Community</h3>
+        <p>We create dignified, stable employment opportunities, particularly for women and youth, fueling local economic growth and skill development.</p>
+      </div>
+    </section>
+    
+    <hr style="border: 0; border-top: 1px solid #ddd;">
+
+    <section id="projects">
+      <h2>What We Do</h2>
+      <div class="projects">
+        <div class="card">
+          <img src="assets/fertilizer.jpg" alt="Sacks of organic fertilizer">
+          <h3>High-Quality Fertilizer Production</h3>
+          <p>Organic waste is meticulously composted and converted into nutrient-rich, affordable fertilizers to boost crop yields sustainably.</p>
+        </div>
+        <div class="card">
+          <img src="assets/farmers.jpg" alt="Cameroonian farmer smiling">
+          <h3>Empowering Smallholder Farmers</h3>
+          <p>We supply subsidized fertilizers to local farmers, lowering their input costs, increasing profitability, and improving regional food security.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr style="border: 0; border-top: 1px solid #ddd;">
+    
+    <section id="team">
+      <h2>Meet the Founders</h2>
+      <div class="team">
+        <div class="card">
+          <img src="assets/nadine.jpg" alt="Portrait of Nadine Makuetche">
+          <h3>Nadine Makuetche</h3>
+          <p>Co-founder & Operations Lead</p>
+        </div>
+        <div class="card">
+          <img src="assets/rosine.jpg" alt="Portrait of Rosine Musabyimana">
+          <h3>Rosine Musabyimana</h3>
+          <p>Co-founder & Community Relations</p>
+        </div>
+      </div>
+    </section>
+
+    <hr style="border: 0; border-top: 1px solid #ddd;">
+
+    <section id="contact" class="contact">
+      <h2>Get In Touch</h2>
+      <p>We'd love to hear from you, whether you're a farmer, a potential partner, or a supporter.</p>
+      <p><strong>Email:</strong> <a href="mailto:ecogrow.cmr@gmail.com">ecogrow.cmr@gmail.com</a></p>
+     <p><strong>WhatsApp:</strong> 
+  <a href="https://wa.me/+254757645691?text=Hello%20EcoGrow%20Cameroon%2C%20I%20would%20like%20to%20learn%20more%20about%20your%20project." target="_blank">
+    +254757645691
+  </a>
+</p>
+
+      <p><strong>Location:</strong> Southwest Region, Cameroon</p>
+      <div class="cta-buttons">
+        <a href="https://www.paypal.com/donate" target="_blank" class="btn">Make a Donation</a>
+        <a href="mailto:ecogrow.cmr@gmail.com" class="btn">Partner With Us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 EcoGrow Cameroon | All rights reserved</p>
+    <p>Designed for sustainability and community impact.</p>
+  </footer>
+</body>
+</html>
